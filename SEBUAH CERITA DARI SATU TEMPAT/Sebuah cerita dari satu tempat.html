@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Stories</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #ffafbd, #ffc3a0);
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-y: auto;
+        }
+
+        .container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            padding: 20px 30px;
+            max-width: 800px;
+            text-align: justify;
+            overflow: hidden;
+        }
+
+        .line {
+            font-style: italic;
+            font-size: 1.2rem;
+            font-weight: 500;
+            white-space: pre-wrap;
+            overflow: hidden;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .line.bold {
+            font-weight: bold;
+            text-align: center;
+            font-style: normal;
+        }
+
+        footer {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #777;
+            text-align: center;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .nav-buttons button {
+            background-color: #ff8db3;
+            border: none;
+            padding: 10px;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .nav-buttons button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        /* Menghapus efek border kanan */
+    </style>
+</head>
+<body>
+    <div class="container" id="story-container">
+        <div id="story-content"></div> <!-- Tempat cerita muncul -->
+
+        <audio id="audio-player" controls>
+            <source src="https://drive.google.com/uc?export=download&id=12OcyIlFR8AyVz6B1LE-wBMJpOyY0LHGV" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
+
+        <div class="nav-buttons">
+            <button id="prevButton" onclick="changeStory(-1)" disabled>Previous</button>
+            <button id="nextButton" onclick="changeStory(1)">Next</button>
+        </div>
+
+        <footer>&#169; 2025 Richo Santana</footer>
+    </div>
+
+    <script>
+        const stories = [
+            {
+                title: "3 Oktober 2024 (Bogor)",
+                content: [
+                    "Hai, hari ini bakal jadi salah satu hari yang nggak akan pernah aku lupain. kenapa kok bisa?, aku dan dia akan mendampingi kegiatan P5 bareng ke Bekasi. Serunya lagi, kita duduk di bus yang sama, bahkan kursinya sebelahan. Jujur, jantungku rasanya mau copot! Antara senang dan gugup, tapi lebih ke bahagia sih, karena ini pertama kalinya aku bisa duduk sedekat ini sama dia.\n\nPerjalanan dimulai dengan suasana seru. Kita duduk bareng Bu Een, dan dari awal udah rame sama canda tawa. Kita juga sempet foto-foto bareng. Dia sibuk ngejepret pakai kamera, sementara aku bikin video kecil-kecilan biar ada kenangannya. Sepanjang jalan, aku coba ajak dia ngobrol, walaupun kadang topik yang kuangkat itu receh banget, bahkan aku udah tahu jawabannya. Tapi, nggak apa-apa, yang penting aku bisa terus ngobrol sama dia. \n\nBegitu sampai di tujuan, kami disambut makan siang yang ayam. Aku sempat nawarin diri buat ambilin makanannya, terus ngajak dia duduk bareng guru-guru lain. Rasanya senang aja bisa ngebantu dia, walau cuma hal kecil. Kayak ada perasaan senang tersediri gitu, seolah-olah kita udah deket banget itu opini yang aku rasakan.\n\nHabis makan, kami masuk ke area industri. Memang sih, nggak banyak momen bareng di situ, tapi waktu Ashar, ada momen yang berkesan banget. Kami memutuskan buat sholat bareng di mushola. Pas di sana, aku sempat berdoa dalam hati, minta supaya Tuhan jaga perasaan ini, dan jaga dia yang di luar kelihatan kuat tapi sebenarnya rapuh.Habis sholat, aku nunggu dia sebentar sebelum kami balik ke rombongan. Dalam perjalanan pulang ke Bogor, dia kelihatan capek banget. Pas jam setengah enam sore, dia akhirnya ketiduran di bus. Sebelum tidur, dia sempat bercanda, “Jangan jadi paparazzi ya.” Aku cuma senyum sambil bilang iya. Tapi yang dia nggak tahu, waktu dia tidur dan kepalanya tiba-tiba bersandar di pundakku, rasanya kayak... dunia berhenti. Aku nggak berani gerak sama sekali, takut dia bangun. Momen itu, aku ngerasa damai banget. Kayak, Tuhan ngerti apa yang aku rasain selama ini.\n\nSampai di Bogor, aku bareng Bu Dian sempat nganterin dia pulang. Akhirnya tinggal aku dan dia aja di jalan. Aku coba bikin suasana santai lagi biar nggak kaku. Dan dalam hati, aku cuma bisa bersyukur. Hari ini ngasih aku banyak kebahagiaan dan harapan. Ini bakal jadi hari yang spesial banget buatku. Makasih, Tuhan, untuk hari ini."
+                ],
+                audio: "231024.mp3"
+            },
+            {
+                title: "7 Oktober 2024",
+                content: [
+                    "Hari yang penuh dengan emosi campur aduk. Pagi itu, dia sedang melakukan kegiatan PKP, menggantikan anggota yang biasanya diwakasek. Di lingkungan kerja, suasana sedikit rumit karena beberapa masalah yang belum terselesaikan dari hari-hari sebelumnya. Namun, aku merasa semangat, karena kali ini aku punya kesempatan untuk membantunya. Aku berinisiatif menawarkan laptopku untuk dia pakai, berharap bisa membantunya bekerja lebih nyaman."
+                ],
+                audio: "231024.mp3"
+            }
+        ];
+
+        let currentStoryIndex = 0;
+        let currentLineIndex = 0;
+
+        const prevButton = document.getElementById('prevButton');
+        const nextButton = document.getElementById('nextButton');
+        const storyContent = document.getElementById('story-content');
+        const audioPlayer = document.getElementById('audio-player');
+
+        function typeWriter(line, element) {
+            let i = 0;
+            let text = line;
+            element.textContent = '';
+            function typing() {
+                if (i < text.length) {
+                    element.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(typing, 5); // Kecepatan mengetik
+                }
+            }
+            typing();
+        }
+
+        function displayStory() {
+            const currentStory = stories[currentStoryIndex];
+
+            // Clear previous content
+            storyContent.innerHTML = '';
+
+            // Display title
+            const titleElement = document.createElement('div');
+            titleElement.className = 'line bold';
+            titleElement.textContent = currentStory.title;
+            storyContent.appendChild(titleElement);
+
+            // Display content with typing effect
+            const contentElement = document.createElement('div');
+            contentElement.className = 'line';
+            storyContent.appendChild(contentElement);
+
+            typeWriter(currentStory.content[currentLineIndex], contentElement);
+
+            // Audio
+            audioPlayer.src = currentStory.audio;
+
+            // Update button states
+            prevButton.disabled = currentStoryIndex === 0;
+            nextButton.disabled = currentStoryIndex === stories.length - 1;
+
+            // If this is the last line of the current story, show Next button as enabled
+            if (currentLineIndex === currentStory.content.length - 1) {
+                nextButton.disabled = false;
+            }
+        }
+
+        function changeStory(direction) {
+            if (direction === 1) {
+                if (currentLineIndex < stories[currentStoryIndex].content.length - 1) {
+                    currentLineIndex++;
+                } else {
+                    if (currentStoryIndex < stories.length - 1) {
+                        currentStoryIndex++;
+                        currentLineIndex = 0;
+                    }
+                }
+            } else if (direction === -1) {
+                if (currentLineIndex > 0) {
+                    currentLineIndex--;
+                } else {
+                    if (currentStoryIndex > 0) {
+                        currentStoryIndex--;
+                        currentLineIndex = stories[currentStoryIndex].content.length - 1;
+                    }
+                }
+            }
+
+            displayStory();
+        }
+
+        // Initial display
+        displayStory();
+    </script>
+</body>
+</html>
